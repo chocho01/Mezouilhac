@@ -1,0 +1,49 @@
+<% include header %>
+<div class="ui page grid main" ng-app="mezouilhac-gmap">
+	<div class="row" ng-controller="activiteCtrl">
+		<div class="ten wide column">
+			<h2 class="ui top red inverted attached header ">
+				Activite / Région
+			</h2>
+			<div class="ui attached segment activites">
+				<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:100%; width:100%;" events="map.event">
+					<ui-gmap-markers models="activites" coords="'self'" icon="'icon'" control='map.markerControl'>
+
+						<ui-gmap-windows show="false" control='map.windowControl' ng-cloak>
+							<div>
+								<img ng-srcset="/img/icon/{{img}}" alt="{{img}}" ng-non-bindable>
+								<h3 ng-non-bindable>{{title}}</h3>
+								<h5 ng-non-bindable>{{category}}</h5>
+								<p ng-non-bindable>Il faudrait pour voir mettre une micro description ! Pour savoir keke c ke 7 activité.</p>
+								<a ng-href="http://{{url}}" target="blank" ng-non-bindable>{{url}}</a>
+							</div>
+						</ui-gmap-windows>
+					</ui-gmap-markers>
+				</ui-gmap-google-map>
+			</div>	
+		</div>
+		<div class="six wide column">
+			<div class="ui attached segment">
+				<div class="ui selection relaxed divided list">
+					<div class="item" ng-repeat="activite in list_activites" ng-click="setOn(activite._id)">
+						<img class="ui avatar image" ng-src="/img/icon/{{activite.icon}}.png">
+						<div class="content">
+							<div class="header">{{activite.nom}}</div>
+							{{activite.adresse}}
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<% include footer %>
+<script src='components/lodash/dist/lodash.min.js'></script>
+<script src='components/bluebird/js/browser/bluebird.js'></script>*
+<script src='components/angular/angular.min.js'></script>
+<script src='components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvrkKnNAGJ8w_zmoKpSVd5i_XBVS_yriA"></script> -->
+<script src="js/activiteJS.js"></script>
+</body>
+</html>

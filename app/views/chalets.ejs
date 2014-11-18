@@ -1,0 +1,102 @@
+<% include header %>
+
+<div class="ui page grid chalets main" ng-app="mezouilhac-chalet" ng-controller="chaletsCtrl">
+	<div class="row">
+		<div class="column">
+			<div class="ui segment">
+				<h2 class="ui header ">
+				Nos hébérgements
+				</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<div class="ui four items">
+				<% chalets.forEach(function (chalet, i) { %>
+				<div class="item chalet-min"  ng-init="loadChalet('<%= chalet._id %>')">
+					<div class="image">
+						<img src="img/chalets/<%= chalet.image.principale %>">
+						<a class="like ui blue corner  label">
+							<span class="nb-personne"><%= chalet.capacite %></span>
+							<i class="user icon"></i>
+						</a>
+					</div>
+					<div class="content">
+						<div class="name"><%= chalet.nom %></div>
+						<p class="description"><%= chalet.description_courte %></p>
+						<a class="ui right floated labeled icon red button open-chalet" data-modal="<%= i %>" ng-click="openModal('<%= chalet._id %>')">
+							<i class="search icon"></i>
+							En savoir plus
+						</a>
+					</div>
+				</div>
+				<% }); %>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="ui large modal">
+		<i class="close icon"></i>
+		<div class="header">
+			{{chalet.nom}}
+		</div>
+		<div class="content">
+			<div class="ui grid">
+				<div class="row">
+					<div class="ten wide column">
+						<div class="ui segment">
+							<img ng-src="img/chalets/{{gallery.main}}">
+						</div>
+					</div>
+					<div class="six wide column">
+						<div class="ui segment">
+							<div class="ui small images">
+								<img ng-repeat="miniature in chalet.image.galerie" ng-src="/img/chalets/{{miniature}}" ng-click="changeImg(miniature)">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="six wide column">
+						<div class="row">
+							<div class="ui segment">
+								<h3 class="ui large top attached green label">Caractéristique</h3>
+								<p>puis on va mettre du texte ici<br/>
+									Même une liste</p>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="ui segment">
+								<h3 class="ui large top attached green label">Prix</h3>
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="ten wide column">
+						<div class="ui segment">
+							<h3 class="ui large top attached green label">Inventaire</h3>
+							<div ng-repeat="inventaire in chalet.inventaire">
+								<h4>{{inventaire.categorie}}</h4>
+								<p ng-repeat="item in inventaire.contenu">{{item}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui button">Fermer</div>
+		</div>
+	</div>
+</div>
+
+<% include footer %>
+
+<script src='components/angular/angular.min.js'></script>
+<script src="js/chaletJS.js"></script>
+
+</body>
+</html>

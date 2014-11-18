@@ -1,0 +1,102 @@
+html, body {
+    min-height: 100%;
+    margin: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #555555;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.menu {
+    background: rgba(150, 200, 50, 0.7);
+    height: 52px;
+    text-align: center;
+    z-index: 2;
+    clear: both;
+    box-shadow: 0 4px 5px rgba(1, 1, 2, 0.4);
+    ul, li {
+        display: inline-block;
+        list-style: none;
+    }
+    ul {
+        padding-left: 150px;
+        height: 52px;
+        line-height: 52px;
+        margin-top: 0;
+    }
+    li {
+        float: left;
+        padding: 0 10px;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #fff;
+        &.active, &:hover {
+            background: #9DC21C;
+        }
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        z-index: 30;
+    }
+}
+.main {
+  margin-top: 25px !important;
+  margin-bottom: 25px !important;
+
+  .slider {
+    position: relative;
+    overflow: hidden;
+    height: 275px;
+  }
+
+  .description {
+    padding: 15px 15px;
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .liste-activite {
+      margin-left: 25px;
+    }
+  }
+
+  .chalet-min {
+    .label {
+        width: 5em;
+        height: 5em;
+
+        &:hover .nb-personne {
+            color: #ef404a;
+        }
+
+        &:after {
+            border-right: 5em solid transparent;
+            border-bottom: 5em solid transparent;
+            border-right-color: inherit;
+        }
+
+        .nb-personne {
+            font-family: 'Open Sans Condensed', sans-serif;
+            left: 40px;
+            font-size: 17px;
+            font-family: bold;
+            position: absolute;
+            top: 20px;
+            opacity: .75;
+        }
+
+        .icon {
+            top: -2px;
+            left: 25px;
+            font-size: 16px;
+            position: absolute;
+        }
+    }
+  }
+}
+
+
