@@ -1,0 +1,100 @@
+<% include ../header %>
+<div class="ui page grid main" ng-app="mezouilhac-backoffice" ng-controller="activiteCtrl">
+	<div class="row">
+		<div class="ten wide column">
+			<h2 class="ui top red inverted attached header ">
+				Ajouter une activité
+			</h2>
+			<div class="ui attached segment activites">
+				<div class="ui form segment">
+					<div class="field">
+						<label>Nom de l'activité</label>
+						<input type="text" ng-model="activite.nom" placeholder="Nom..">
+					</div>
+					<div class="two fields">
+						<div class="field">
+							<label>Latitude</label>
+							<input type="number" ng-model="activite.position.latitude" placeholder="Latitude..." ng-change="getAdresse()">
+						</div>
+						<div class="field">
+							<label>Longitude</label>
+							<input type="number" ng-model="activite.position.longitude" placeholder="Longitude..." ng-change="getAdresse()">
+						</div>
+					</div>
+					<div class="field">
+						<label>Choisir une catégorie</label>
+						<div class="ui simple fluid selection dropdown">
+							<div class="text">{{activite.categorie}}</div>
+							<i class="dropdown icon"></i>
+							<div class="menu">
+								<div class="item" ng-click="changeCategorie('Sport')">Sport</div>
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>Adresse</label>
+						<input type="text" ng-model="activite.adresse" placeholder="Adresse...">
+					</div>
+					<div class="field">
+						<label>Description</label>
+						<textarea ng-model="activite.description" ></textarea>
+					</div>
+					<div class="field">
+						<label>URL du site</label>
+						<input type="url" ng-model="activite.url" placeholder="Url du site...">
+					</div>
+					<div class="field">
+						<label>Icon</label>
+						<div class="ui eight column grid">
+							<div class="column" ng-repeat="icon in listIcon">
+								<div ng-class="{'active' : icon == activite.icon }" class="small circular ui button" ng-click="changeIcon(icon)">
+									<img ng-src="/img/icon/{{icon}}.png" alt="Icon arbre" height="25px"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<input type="hidden" ng-model="activite.icon" value="arbre">
+
+					<div class="ui ng-class:{'success' : message.ok,  'error' : !message.ok }; message" ng-if="message">
+						<i class="close icon"></i>
+						<div class="header">
+							{{message.msg}}
+						</div>
+					</div>
+
+					<button class="ui blue submit  button" ng-click="addActivite()" ng-if="action == 'add'">Ajouter</button>
+					<button class="ui blue submit  button" ng-click="updateActivite(activite._id)" ng-if="action == 'update'">Modifier</button>
+					<button class="ui blue submit  button" ng-click="deleteActivite(activite._id)" ng-if="action == 'update'">Supprimer</button>
+				</div>
+			</div>
+		</div>
+		<div class="six wide column">
+			<h2 class="ui top red inverted attached header ">
+				Modifier une activité
+			</h2>
+			<div class="ui attached segment">
+				<div class="ui selection relaxed divided list">
+					<div class="item" ng-repeat="activite in list_activites | orderBy:nom" ng-click="getActivite(activite._id)">
+						<img class="ui avatar image" ng-src="/img/icon/{{activite.icon}}.png">
+						<div class="content">
+							<div class="header">{{activite.nom}}</div>
+							{{activite.adresse}}
+						</div>
+					</div>
+					<div class="item" ng-click="init()">
+						<img class="ui avatar image" ng-src="/img/icon/add.png">
+						<div class="content">
+							<div class="header">Ajouter une activité</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../footer %>
+<script src='/components/angular/angular.min.js'></script>
+<script src="/js/backoffice/admin_activites.js"></script>
+</body>
+</html>

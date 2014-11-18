@@ -1,0 +1,17 @@
+{
+  "name": "mezouilhac",
+  "version": "0.0.1",
+  "dependencies": {
+        "semantic-ui": "latest",
+        "html5shiv": "latest",
+        "font-awesome": "latest",
+        "vegas": "latest",
+        "jquery": "1.10.2",
+        "angular-google-maps" : "latest"
+   },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
