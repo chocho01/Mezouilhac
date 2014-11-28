@@ -1,0 +1,153 @@
+<% include ../header %>
+<div class="ui page grid main chalet-backoffice" ng-app="mezouilhac-backoffice" ng-controller="chaletCtrl">
+	<div class="row">
+		<div class="ten wide column">
+			<div class="ui attached segment activites">
+				<h1 class="ui large top attached yellow label">
+					Ajouter un chalet
+				</h1>
+				<div class="ui form segment" ng-hide="message">
+					<div class="fields">
+						<div class="ten wide field">
+							<label>Nom du chalet</label>
+							<input type="text" ng-model="chalet.nom" placeholder="Nom..">
+						</div>
+						<div class="six wide field">
+							<label>Capacité</label>
+							<input placeholder="Capacité..." type="text" ng-model="chalet.capacite">
+						</div>
+					</div>
+					<div class="field">
+						<label>Description</label>
+						<textarea ng-model="chalet.description"></textarea>
+					</div>
+					<!--Inventaire-->
+					<div class="field">
+						<label>Inventaire <div class="circular ui mini ticon button" ng-click="addSection()"><i class="add icon"></i></div> </label>
+						<div class="ui cards">
+							<div class="card inventaire" ng-repeat="inventaire in chalet.inventaire">
+								<div class="content">
+									<div class="header">
+										<edit-text ng-model="inventaire.nom" on-remove="removeSection($index)"></edit-text>
+									</div>
+									<div class="description">
+										<div class="ui list">
+											<div class="item" ng-repeat="item in inventaire.item track by $index">
+												<edit-text ng-model="item" on-remove="removeItem($parent.$index, $index)" on-change="updateItem($parent.$index, $index, item)"></edit-text>
+											</div>
+										</div>
+									</div>
+								</div>
+								<button class="ui bottom attached button" ng-click="addItem($index)">Ajouter un item</button>
+							</div>
+						</div>
+					</div>
+					<!-- Liste des images-->
+					<div class="field">
+						<label for="file">Galerie <div class="circular ui mini ticon button"><i class="add icon"></i></div> </label>
+						<div class="ui five cards">
+							<div class="ui card" ng-repeat="img in chalet.gallerie">
+								<div class="ui slide masked reveal image">
+									<div class="visible content ui image box-gallerie">
+										<a class="ui left corner red label" ng-show="chalet.img_principale == img">
+											<i class="fa fa-star icon"></i>
+										</a>
+										<img ng-src="/img/chalets/{{img}}" class="rounded ui image box-gallerie" />
+									</div>
+									<div class="ui labeled vertical fluid inverted icon menu hidden content box-gallerie">
+										<a class="item" ng-click="definirImagePrincipale($index)">
+											<i class="icon fa fa-star"></i>
+											Image principale
+										</a>
+										<a class="item" ng-click="supprimerImage($index)">
+											<i class="icon fa fa-remove"></i>
+											Supprimer
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<input type="file" id="file" nv-file-select uploader="uploader" style="display:none"/><br/>
+						<table class="ui table segment" ng-show="uploader.queue.length > 0">
+							<thead>
+							<tr>
+								<th width="50%">Nom</th>
+								<th ng-show="uploader.isHTML5">Taille</th>
+								<th ng-show="uploader.isHTML5">Avancement</th>
+								<th>Status</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat="item in uploader.queue">
+								<td><strong>{{ item.file.name }}</strong></td>
+								<td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+								<td ng-show="uploader.isHTML5">
+									<div class="ui progress" style="margin-bottom: 0;">
+										<div class="bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+									</div>
+								</td>
+								<td class="text-center">
+									<span ng-show="item.isSuccess"><i class="fa fa-check"></i></span>
+									<span ng-show="item.isCancel"><i class="fa fa-ban"></i></span>
+									<span ng-show="item.isError"><i class="fa fa-close"></i></span>
+								</td>
+								<td nowrap>
+									<button type="button" class="ui tiny green button" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+										<span class="fa fa-upload"></span> Upload
+									</button>
+									<button type="button" class="ui tiny orange button" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+										<span class="fa fa-ban"></span> Cancel
+									</button>
+									<button type="button" class="ui tiny red button" ng-click="item.remove()">
+										<span class="fa fa-trash"></span> Remove
+									</button>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<button class="ui blue submit  button" ng-click="addChalet()" ng-if="action == 'add'">Ajouter</button>
+					<button class="ui blue submit  button" ng-click="updateChalet(chalet._id)" ng-if="action == 'update'">Modifier</button>
+					<button class="ui blue submit  button" ng-click="deleteChalet(chalet._id)" ng-if="action == 'update'">Supprimer</button>
+				</div>
+				<div class="ui ng-class:{'success' : message.ok,  'error' : !message.ok }; message" ng-show="message" style="margin-top: 50px;">
+					<div class="header">
+						{{message.msg}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="six wide column">
+			<div class="ui attached segment">
+				<h1 class="ui large top attached teal label">
+					Modifier un chalet
+				</h1>
+				<div class="ui selection relaxed divided list">
+					<div class="item" ng-repeat="chalet in list_chalets | orderBy:nom" ng-click="getChalet(chalet._id)">
+						<img class="ui avatar image" ng-src="/img/chalets/{{chalet.img_principale}}">
+						<div class="content">
+							<div class="header">{{chalet.nom}}</div>
+						</div>
+					</div>
+					<div class="item" ng-click="init()">
+						<img class="ui avatar image" ng-src="/img/icon/add.png">
+						<div class="content">
+							<div class="header">Ajouter un chalet</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../footer %>
+<script src='/components/angular/angular.min.js'></script>
+<script src="/components/es5-shim/es5-sham.js"></script>
+<script src="/components/angular-file-upload/angular-file-upload.min.js"></script>
+<script src="/js/editTextDirective.js"></script>
+<script src="/js/backoffice/admin_chalets.js"></script>
+</body>
+</html>
