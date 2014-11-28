@@ -8,20 +8,31 @@ fs = require 'fs'
 Activite  = mongoose.model 'Activite'
 Chalet  = mongoose.model 'Chalet'
 
+isAuth = (req, res, next) ->
+	# if user is authenticated in the session, carry on
+	return next()  if req.isAuthenticated()
+	# if they aren't redirect them to the home page
+	res.redirect "/admin"
+	return
+
 module.exports = (app) ->
 	app.use '/admin', router
 
 	router.get '/', (req, res, next)->
-		res.render 'backoffice/auth',
-			title : 'Admin'
+		if !req.user
+			res.render 'backoffice/auth',
+				title : 'Admin'
+		else
+			res.render 'backoffice/index',
+				title : 'Admin'
 
-	router.post '/', passport.authenticate 'local-login', { successRedirect: '/', failureRedirect: '/admin' }
+	router.post '/', passport.authenticate 'local-login', { successRedirect: '/admin', failureRedirect: '/admin' }
 
-	router.get '/activites', (req, res, next) ->
+	router.get '/activites', isAuth, (req, res, next) ->
 		res.render 'backoffice/activites',
 			title: 'Les activités / région'
 
-	router.get '/chalets', (req, res, next) ->
+	router.get '/chalets', isAuth, (req, res, next) ->
 		res.render 'backoffice/chalets',
 			title: 'Les chalets'
 
@@ -44,10 +55,9 @@ module.exports = (app) ->
 		delete activite._id;
 		Activite.update({_id : req.params.id}, activite, {}, (err, numAffected)->
 			if err
-				result =
+				rres.send
 					ok: false
 					msg: 'Une erreur est survenue.'
-				res.send result
 			else
 				result =
 					ok: true
