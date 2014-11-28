@@ -12,26 +12,30 @@
 	</div>
 	<div class="row">
 		<div class="column">
-			<div class="ui four items">
+			<div class="ui tree cards">
+
 				<% chalets.forEach(function (chalet, i) { %>
-				<div class="item chalet-min"  ng-init="loadChalet('<%= chalet._id %>')">
+				<div class="ui card" ng-init="loadChalet('<%= chalet._id %>')">
 					<div class="image">
-						<img src="img/chalets/<%= chalet.image.principale %>">
-						<a class="like ui blue corner  label">
-							<span class="nb-personne"><%= chalet.capacite %></span>
-							<i class="user icon"></i>
-						</a>
+						<img ng-src="img/chalets/<%= chalet.img_principale %>" >
 					</div>
 					<div class="content">
-						<div class="name"><%= chalet.nom %></div>
-						<p class="description"><%= chalet.description_courte %></p>
-						<a class="ui right floated labeled icon red button open-chalet" data-modal="<%= i %>" ng-click="openModal('<%= chalet._id %>')">
-							<i class="search icon"></i>
-							En savoir plus
-						</a>
+						<a class="header"><%= chalet.nom %></a>
+						<div class="meta">
+							<i class="users icon"></i>
+							<%= chalet.capacite %>
+						</div>
+						<div class="description">
+							<p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces.</p>
+						</div>
+					</div>
+					<div class="ui bottom attached red button" data-modal="<%= i %>" ng-click="openModal('<%= chalet._id %>')">
+						<i class="search icon"></i>
+						En savoir plus
 					</div>
 				</div>
 				<% }); %>
+
 			</div>
 		</div>
 	</div>
@@ -47,13 +51,13 @@
 				<div class="row">
 					<div class="ten wide column">
 						<div class="ui segment">
-							<img ng-src="img/chalets/{{gallery.main}}">
+							<img ng-if="gallerie" ng-src="img/chalets/{{gallerie | imgFull}}" width="100%">
 						</div>
 					</div>
 					<div class="six wide column">
 						<div class="ui segment">
-							<div class="ui small images">
-								<img ng-repeat="miniature in chalet.image.galerie" ng-src="/img/chalets/{{miniature}}" ng-click="changeImg(miniature)">
+							<div class="ui tiny bordered images">
+								<img ng-repeat="miniature in chalet.gallerie" ng-src="/img/chalets/{{miniature}}" ng-click="changeImg(miniature)">
 							</div>
 						</div>
 					</div>
@@ -78,9 +82,17 @@
 					<div class="ten wide column">
 						<div class="ui segment">
 							<h3 class="ui large top attached green label">Inventaire</h3>
-							<div ng-repeat="inventaire in chalet.inventaire">
-								<h4>{{inventaire.categorie}}</h4>
-								<p ng-repeat="item in inventaire.contenu">{{item}}</p>
+							<div class="ui three cards">
+								<div class="card" ng-repeat="inventaire in chalet.inventaire">
+									<div class="content">
+										<div class="header">{{inventaire.nom}}</div>
+										<div class="description">
+											<div class="ui list">
+												<div class="item" ng-repeat="item in inventaire.item">{{item}}</div>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

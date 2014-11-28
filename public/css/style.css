@@ -2,12 +2,12 @@ html, body {
   min-height: 100%;
   margin: 0;
   font-family: 'Open Sans Condensed', sans-serif;
-  color: #555555; }
+  color: #555555;
+  font-size: 1.2em; }
 
 * {
   margin: 0;
   padding: 0; }
-
 
 .menu {
   background: rgba(150, 200, 50, 0.7);
@@ -41,11 +41,14 @@ html, body {
 
 .main {
   margin-top: 25px !important;
-  margin-bottom: 25px !important; }
+  margin-bottom: 25px !important;
+  padding-left: 10% !important;
+  padding-right: 10% !important; }
   .main .slider {
     position: relative;
     overflow: hidden;
-    height: 275px; }
+    height: 275px;
+    margin-bottom: 0; }
   .main .description {
     padding: 15px 15px; }
     .main .description p {
@@ -75,3 +78,27 @@ html, body {
       left: 25px;
       font-size: 16px;
       position: absolute; }
+
+.box-gallerie {
+  width: 150px !important;
+  height: 150px !important;
+  margin: 0 !important; }
+  .box-gallerie .item {
+    font-size: 0.8em !important; }
+
+.chalet-backoffice .inventaire input {
+  display: none;
+  padding: 0 0.2em !important;
+  width: 75px; }
+.chalet-backoffice .inventaire label {
+  display: inline; }
+.chalet-backoffice .inventaire .editing .item-name {
+  display: none; }
+.chalet-backoffice .inventaire .editing input {
+  display: block; }
+.chalet-backoffice .inventaire .editing .buttons {
+  display: none; }
+.chalet-backoffice .progress .bar {
+  min-width: 0em !important; }
+
+/*# sourceMappingURL=style.css.map */

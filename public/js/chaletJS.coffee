@@ -1,12 +1,11 @@
-# $ ->
-# 	$('.open-chalet').click (e)->
-# 		modal = $(e.target).attr "data-modal"
-# 		$('.ui.modal.modal'+modal).modal 'show'
-# 		return
-# 	return
-
-
 app = angular.module 'mezouilhac-chalet', []
+
+app.filter "imgFull", [ ->
+	(img)->
+			if !img
+				return null
+			return img.substr(0, img.length-8)+img.substr(img.length-4, img.length)
+]
 
 app.controller "chaletsCtrl", [
 	"$scope"
@@ -15,20 +14,19 @@ app.controller "chaletsCtrl", [
 
 		$scope.chalets = []
 		$scope.chalet = null
-		$scope.gallery = {
-			main : null
-		}
+		$scope.gallerie = null
 
 		$scope.loadChalet = (id)->
-			$http.get("/chalet/"+id).success((d)->
-				$scope.chalets[id] = d[0]
+			$http.get("/api/chalets/"+id).success((d)->
+				$scope.chalets[id] = d
 			)
 
 		$scope.openModal = (id)->
 			$('.ui.modal').modal 'show'
 			$scope.chalet = $scope.chalets[id]
-			$scope.gallery.main = $scope.chalet.image.principale
+			$scope.gallerie = $scope.chalet.img_principale
 
 		$scope.changeImg = (img)->
-			$scope.gallery.main = img
+			$scope.gallerie =  img
+
 ]

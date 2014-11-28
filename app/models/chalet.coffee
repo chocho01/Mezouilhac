@@ -5,14 +5,13 @@ Schema   = mongoose.Schema
 
 ChaletSchema = new Schema(
   nom: String
-  image: 
-  	principale : String
-  	galerie : Array
+  img_principale : String
+  gallerie : Array
   capacite : String
-  description_courte : String
+  description : String
   inventaire : [
-  	categorie : String
-  	contenu: Array
+  	nom : String
+  	item: Array
   ]
 )
 

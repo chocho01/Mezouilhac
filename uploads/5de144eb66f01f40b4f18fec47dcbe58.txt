@@ -1,0 +1,56 @@
+
+
+Démarches à éffectuer : 
+
+
+
+1 - Ouvrir "Windows Loader".
+
+2 - Sous l'onglet "Installation" cliquer sur "Install" puis patientez.
+
+3 - Lorsqu'on vous le demandera, cliquer sur "reboot", votre ordianteur va redemarrer.
+
+4 - Si tout se passe bien, vous devriez voir votre version de Windows "activé"
+    
+pour vérifier cela, rien de plus simple :
+ 
+              - "Démarrer"
+
+              - Faite un "Clique droit" sur "Ordinateur"
+
+              - Puis vérifier au bas de la page si Windows est bien "Activé "
+
+
+
+
+[Dans le cas ou Windows ne serait pas activé, recommencé les étapes en vous créant un "profil" sous 'Windows Loader' pour qu'il regénére une autre license.]
+
+
+
+
+
+5 - Si vous voyez que Windows est bien activé, vous pourrez maintenant faire toutes les mises à jour. 
+
+
+      Mais n'oubliez pas de ne jamais installé la mise à jour KB971033 [CECI EST UNE ETAPE IMPORTANTE] : 
+
+
+
+[Pour cela sous "Windows Update", chercher la mise à jour KB971033 puis fait "clique droit" dessus, puis "masqué", vous serez beaucoup plus tranquille]
+
+
+
+      Sinon Windows va être reconnu comme piraté et il va falloir tout réinstallé, ce ne serait pas chouette !
+
+
+6 - A partir de là, toute les mises à jour seront prise en compte, incluant même le SP1.
+
+
+7 - Si vous rencontrez des problèmes avec ce patch d'activation, où sur d'éventuelles étapes lors de l'activation, envoyé moi un message privé, je tâcherais d'y répondre dans les plus bref délai.
+
+
+8 - Enjoy ! 
+
+
+PS : Désolé pour les fautes, mais j'éspère que ce sera clair pour vous.
+
