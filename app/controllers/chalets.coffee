@@ -12,6 +12,7 @@ module.exports = (app) ->
 			res.render 'chalets',
 			title: 'Les chalets'
 			chalets: chalets
+			pageName: 'chalets'
 
 	# L'API pour retourner tous les activités
 	router.get '/api/chalets', (req, res, next) ->

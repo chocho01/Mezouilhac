@@ -23,7 +23,8 @@
     "grunt-cli": "~0.1.13",
     "multer": "~0.1.6",
     "busboy": "~0.2.9",
-    "gm": "~1.17.0"
+    "gm": "~1.17.0",
+    "forever": "~0.13.0"
   },
   "devDependencies": {
     "grunt": "~0.4.5",

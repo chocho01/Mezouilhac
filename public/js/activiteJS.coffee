@@ -1,4 +1,5 @@
 $(".activites").height($(window).height() - ($(window).height()/5))
+$(".list-activites").height($(window).height() - ($(window).height()/6.5))
 
 arrayObjectIndexOf = (myArray, searchTerm, property) ->
 	i = 0

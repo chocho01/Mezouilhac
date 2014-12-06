@@ -3,6 +3,8 @@
 
   $(".activites").height($(window).height() - ($(window).height() / 5));
 
+  $(".list-activites").height($(window).height() - ($(window).height() / 6.5));
+
   arrayObjectIndexOf = function(myArray, searchTerm, property) {
     var i, len;
     i = 0;

@@ -10,6 +10,7 @@ module.exports = (app) ->
 	router.get '/activites', (req, res, next) ->
 		res.render 'activites',
 			title: 'Les activités / région'
+			pageName: 'activites'
 
 	# L'API pour retourner tous les activités
 	router.get '/api/activites', (req, res, next) ->

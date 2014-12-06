@@ -1,22 +1,93 @@
 <% include header %>
-<div class="ui page grid main">
+<section ng-app="mezouilhac-contact" ng-controller="contactCtrl">
+<div class="ui middle aligned page grid main">
 	<div class="row">
 		<div class="six wide column">
-			<div class="ui segment">
+			<h2 class="ui top red inverted attached segment header ">
+				Informations
+			</h2>
+			<div class="ui attached segment">
+				<div class="ui list">
+					<div class="item">
+						<i class="circular inverted teal user icon"></i>
+						<div class="content">
+							<div class="header">François Choraine</div>
+						</div>
+					</div>
+					<div class="item">
+						<i class="circular inverted yellow marker icon"></i>
+						<div class="content">
+							<div class="header">Mezouilhac</div>
+							<div class="description">Riols, 34220</div>
+						</div>
+					</div>
+					<div class="item">
+						<i class="circular inverted green call icon"></i>
+						<div class="content">
+							<div class="header">06 18 73 03 13</div>
+						</div>
+					</div>
+					<div class="item">
+						<i class="circular inverted orange mail icon"></i>
+						<div class="content">
+							<div class="header">chorainef@wanadoo.fr</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="ten wide column">
-			<h2 class="ui top blue inverted attached header">
+			<h2 class="ui top blue inverted attached segment header ">
 				Contactez-nous !
 			</h2>
 			<div class="ui attached segment">
+				<div class="ui form">
+					<div class="two fields">
+						<div class="field">
+							<label>Nom</label>
+							<div class="two fields">
+								<div class="field">
+									<input type="text" name="prenom" placeholder="Prénom">
+								</div>
+								<div class="field">
+									<input type="text" name="nom" placeholder="Nom">
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<label>Email</label>
+							<div class="field">
+								<input type="text" name="email" placeholder="email">
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>Message</label>
+						<textarea></textarea>
+					</div>
+					<div class="field">
+						<div class="ui submit teal button">Envoyer</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
+<div class="map-footer">
+	<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:100%; width:100%;" events="map.event">
+		<ui-gmap-markers models="activites" coords="'self'" icon="'icon'" control='map.markerControl'>
+		</ui-gmap-markers>
+	</ui-gmap-google-map>
+</div>
+</section>
+
 <% include footer %>
-<script src="js/index.js"></script>
+<script src='components/lodash/dist/lodash.min.js'></script>
+<script src='components/bluebird/js/browser/bluebird.js'></script>*
+<script src='components/angular/angular.min.js'></script>
+<script src='components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+<script src="js/contact.js"></script>
 
 </body>
 </html>

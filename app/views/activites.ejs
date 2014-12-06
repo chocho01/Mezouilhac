@@ -1,5 +1,5 @@
 <% include header %>
-<div class="ui page grid main" ng-app="mezouilhac-gmap">
+<div class="ui middle aligned page grid main" ng-app="mezouilhac-gmap">
 	<div class="row" ng-controller="activiteCtrl">
 		<div class="ten wide column">
 			<h2 class="ui top purple inverted attached segment header">
@@ -11,7 +11,7 @@
 
 						<ui-gmap-windows show="false" control='map.windowControl' ng-cloak>
 							<div>
-								<img ng-srcset="/img/icon/{{img}}" alt="{{img}}" ng-non-bindable>
+								<img ng-src="/img/icon/{{img}}" alt="{{img}}" ng-non-bindable>
 								<h3 ng-non-bindable>{{title}}</h3>
 								<h5 ng-non-bindable>{{category}}</h5>
 								<p ng-non-bindable>Il faudrait pour voir mettre une micro description ! Pour savoir keke c ke 7 activité.</p>
@@ -23,7 +23,7 @@
 			</div>	
 		</div>
 		<div class="six wide column">
-			<div class="ui attached segment">
+			<div class="ui attached segment list-activites">
 				<div class="ui selection relaxed divided list">
 					<div class="item" ng-repeat="activite in list_activites" ng-click="setOn(activite._id)">
 						<img class="ui avatar image" ng-src="/img/icon/{{activite.icon}}.png">

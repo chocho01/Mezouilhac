@@ -25,14 +25,18 @@
 
 <div class="menu">
     <ul>
-        <li class="active"><a href="/">Accueil</a>
-        </li>
-        <li><a href="/les-chalets">Les chalets</a>
-        </li>
-        <li ><a href="/activites" >Activit&eacute;s / Région</a>
-        </li>
-        <li><a href="/contact">Contact</a>
-        </li>
+            <li <% if (pageName === 'accueil') { %>class="active" <% } %>>
+                <a href="/">Accueil</a>
+            </li>
+            <li <% if (pageName === 'chalets') { %>class="active" <% } %>>
+                <a href="/les-chalets">Les chalets</a>
+            </li>
+            <li <% if (pageName === 'activites') { %>class="active" <% } %>>
+                <a href="/activites" >Activit&eacute;s / Région</a>
+            </li>
+            <li <% if (pageName === 'contact') {  %>class="active" <% } %>>
+                <a href="/contact">Contact</a>
+            </li>
     </ul>
 </div>
 

@@ -57,16 +57,16 @@ html, body {
     margin-bottom: 0;
   }
 
-  .description {
-    padding: 15px 15px;
-    p {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    .liste-activite {
-      margin-left: 25px;
-    }
-  }
+//  .description {
+//    padding: 15px 15px;
+//    p {
+//      font-size: 16px;
+//      margin-bottom: 10px;
+//    }
+//    .liste-activite {
+//      margin-left: 25px;
+//    }
+//  }
 
   .chalet-min {
     .label {
@@ -145,4 +145,13 @@ html, body {
       min-width: 0em !important;
     }
   }
+}
+
+.map-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 250px;
+  background: rgb(255,255,255);
+  padding-top: 10px;
 }

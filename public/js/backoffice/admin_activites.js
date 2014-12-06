@@ -6,7 +6,7 @@
   app.controller("activiteCtrl", [
     "$scope", "$http", function($scope, $http) {
       $scope.list_activites = [];
-      $scope.listIcon = ["arbre", "animaux"];
+      $scope.listIcon = ["arbre", "animaux", "bank", "bar", "eau", "musee", "music", "pet", "resto", "velo"];
       $scope.init = function() {
         $scope.activite = {
           nom: null,
