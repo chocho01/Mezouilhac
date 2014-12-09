@@ -58,15 +58,40 @@ html, body {
   }
 
   .description {
-    padding: 15px 15px;
+    padding: 30px 25px;
     p {
-      font-size: 16px;
-      margin-bottom: 10px;
+      font-size: 1em;
     }
-    .liste-activite {
-      margin-left: 25px;
+    .steps {
+      margin: 20px auto !important;
+      .content {
+        font-size: 0.8em;
+      }
     }
   }
+.gmap-window {
+  padding-top: 10px;
+  padding-right: 10px;
+
+  .header {
+    font-size: 1.2em;
+  }
+
+  .row {
+    margin-bottom: 2px !important;
+    padding-bottom: 2px !important;
+  }
+  .icon-gmap {
+    margin-bottom: 5px !important;
+    margin-right: 10px !important;
+    margin-top: 5px !important;
+  }
+}
+
+.list-activites {
+    overflow-y: scroll;
+}
+
 
   .chalet-min {
     .label {
@@ -143,6 +168,36 @@ html, body {
   .progress {
     .bar {
       min-width: 0em !important;
+    }
+  }
+}
+
+section.contact {
+
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -250px;
+
+  .map-footer {
+    width: 100%;
+    height: 250px;
+    background: rgb(255, 255, 255);
+    padding-top: 10px;
+    clear: both;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.facebook-box {
+  width: 100%;
+
+  & > span {
+    width: 100% !important;
+
+    & > iframe {
+      width: 100% !important;
     }
   }
 }

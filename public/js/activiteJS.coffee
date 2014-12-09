@@ -1,4 +1,5 @@
-$(".activites").height($(window).height() - ($(window).height()/5))
+$(".activites").height($(window).height() - ($(window).height()/3.5))
+$(".list-activites").height($(window).height() - ($(window).height()/4))
 
 arrayObjectIndexOf = (myArray, searchTerm, property) ->
 	i = 0
@@ -37,29 +38,52 @@ app.controller "activiteCtrl", [
 			$scope.list_activites = d
 			for activite, i in d
 				$scope.activites.push
-					latitude: activite.position.latitude
-					longitude: activite.position.longitude
+					position:
+						latitude: activite.position.latitude
+						longitude: activite.position.longitude
 					id: activite._id
 					icon: "img/icon/"+activite.icon+"_marker.png"
 					url: activite.url
 					img: "/img/icon/"+activite.icon+".png"
 					category: activite.categorie
 					title: activite.nom
+					adresse: activite.adresse
+					description : activite.description
+					showWindow: false
+					windowOptions:
+						visible:false
 
 		GoogleMapApi.then (maps) ->
 			$scope.centerPos = new maps.LatLng(43.507480, 2.822272)
 			# Définis la hauteur du conteneur Gmap à la hauteur du block
 			$(".angular-google-map-container").height($(".activites").height())
 
+			$scope.setOn = (id_marker)->
+				angular.forEach $scope.activites, (marker)->
+					marker.showWindow = false
+					if marker.id == id_marker
+						marker.windowOptions =
+							visible: !marker.windowOptions.visible
+					else
+						marker.windowOptions =
+							visible: false
+				return
+
 			$scope.activites.push
-				latitude: $scope.map.center.latitude,
-				longitude: $scope.map.center.longitude,
+				position:
+					latitude: $scope.map.center.latitude,
+					longitude: $scope.map.center.longitude,
 				title: 'Home'
 				id: 0
 				icon: "/img/icon/home.png"
+				img: "/img/icon/home.png"
+				title: "Mezouilhac"
+				category: "Le gîte"
+				adresse: "Riols, 34220"
+				description: "Bienvenue à Mezouilhac !"
+				windowOptions:
+					visible:false
 
-			$log.log "gmap"
-			$log.log(maps)
 
 		angular.extend $scope, {
 			map :
@@ -73,13 +97,7 @@ app.controller "activiteCtrl", [
 				event: {}
 		}
 
-		$scope.setOn = (id_marker)->
-			markers =  $scope.map.markerControl.getGMarkers()
-			marker = markers[arrayObjectIndexOf(markers, id_marker, "key")]
-			# console.log $scope.map.windowControl.getChildWindows().get(id_marker)
-			gMap = $scope.map.control.getGMap();
-			gMap.setCenter(marker.position)
-			return
+
 		return
 
 

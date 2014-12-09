@@ -11,6 +11,7 @@ ActiviteSchema = new Schema(
     longitude : Number
   adresse: String
   icon : String
+  description: String
 )
 
 # ChaletSchema.virtual('date')

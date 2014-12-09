@@ -50,12 +50,27 @@ html, body {
     height: 275px;
     margin-bottom: 0; }
   .main .description {
-    padding: 15px 15px; }
+    padding: 30px 25px; }
     .main .description p {
-      font-size: 16px;
-      margin-bottom: 10px; }
-    .main .description .liste-activite {
-      margin-left: 25px; }
+      font-size: 1em; }
+    .main .description .steps {
+      margin: 20px auto !important; }
+      .main .description .steps .content {
+        font-size: 0.8em; }
+  .main .gmap-window {
+    padding-top: 10px;
+    padding-right: 10px; }
+    .main .gmap-window .header {
+      font-size: 1.2em; }
+    .main .gmap-window .row {
+      margin-bottom: 2px !important;
+      padding-bottom: 2px !important; }
+    .main .gmap-window .icon-gmap {
+      margin-bottom: 5px !important;
+      margin-right: 10px !important;
+      margin-top: 5px !important; }
+  .main .list-activites {
+    overflow-y: scroll; }
   .main .chalet-min .label {
     width: 5em;
     height: 5em; }
@@ -100,5 +115,27 @@ html, body {
   display: none; }
 .chalet-backoffice .progress .bar {
   min-width: 0em !important; }
+
+section.contact {
+  min-height: 100%;
+  height: auto !important;
+  /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -250px; }
+  section.contact .map-footer {
+    width: 100%;
+    height: 250px;
+    background: white;
+    padding-top: 10px;
+    clear: both;
+    position: relative;
+    z-index: 10; }
+
+.facebook-box {
+  width: 100%; }
+  .facebook-box > span {
+    width: 100% !important; }
+    .facebook-box > span > iframe {
+      width: 100% !important; }
 
 /*# sourceMappingURL=style.css.map */

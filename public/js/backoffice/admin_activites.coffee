@@ -11,6 +11,14 @@ app.controller "activiteCtrl", [
 		$scope.listIcon = [
 			"arbre"
 			"animaux"
+			"bank"
+			"bar"
+			"eau"
+			"musee"
+			"music"
+			"pet"
+			"resto"
+			"velo"
 		]
 
 		$scope.init = ->

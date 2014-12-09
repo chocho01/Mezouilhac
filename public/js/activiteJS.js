@@ -1,7 +1,9 @@
 (function() {
   var app, arrayObjectIndexOf;
 
-  $(".activites").height($(window).height() - ($(window).height() / 5));
+  $(".activites").height($(window).height() - ($(window).height() / 3.5));
+
+  $(".list-activites").height($(window).height() - ($(window).height() / 4));
 
   arrayObjectIndexOf = function(myArray, searchTerm, property) {
     var i, len;
@@ -40,14 +42,22 @@
         for (i = _i = 0, _len = d.length; _i < _len; i = ++_i) {
           activite = d[i];
           _results.push($scope.activites.push({
-            latitude: activite.position.latitude,
-            longitude: activite.position.longitude,
+            position: {
+              latitude: activite.position.latitude,
+              longitude: activite.position.longitude
+            },
             id: activite._id,
             icon: "img/icon/" + activite.icon + "_marker.png",
             url: activite.url,
             img: "/img/icon/" + activite.icon + ".png",
             category: activite.categorie,
-            title: activite.nom
+            title: activite.nom,
+            adresse: activite.adresse,
+            description: activite.description,
+            showWindow: false,
+            windowOptions: {
+              visible: false
+            }
           }));
         }
         return _results;
@@ -55,15 +65,37 @@
       GoogleMapApi.then(function(maps) {
         $scope.centerPos = new maps.LatLng(43.507480, 2.822272);
         $(".angular-google-map-container").height($(".activites").height());
-        $scope.activites.push({
-          latitude: $scope.map.center.latitude,
-          longitude: $scope.map.center.longitude,
+        $scope.setOn = function(id_marker) {
+          angular.forEach($scope.activites, function(marker) {
+            marker.showWindow = false;
+            if (marker.id === id_marker) {
+              return marker.windowOptions = {
+                visible: !marker.windowOptions.visible
+              };
+            } else {
+              return marker.windowOptions = {
+                visible: false
+              };
+            }
+          });
+        };
+        return $scope.activites.push({
+          position: {
+            latitude: $scope.map.center.latitude,
+            longitude: $scope.map.center.longitude
+          },
           title: 'Home',
           id: 0,
-          icon: "/img/icon/home.png"
+          icon: "/img/icon/home.png",
+          img: "/img/icon/home.png",
+          title: "Mezouilhac",
+          category: "Le gîte",
+          adresse: "Riols, 34220",
+          description: "Bienvenue à Mezouilhac !",
+          windowOptions: {
+            visible: false
+          }
         });
-        $log.log("gmap");
-        return $log.log(maps);
       });
       angular.extend($scope, {
         map: {
@@ -78,13 +110,6 @@
           event: {}
         }
       });
-      $scope.setOn = function(id_marker) {
-        var gMap, marker, markers;
-        markers = $scope.map.markerControl.getGMarkers();
-        marker = markers[arrayObjectIndexOf(markers, id_marker, "key")];
-        gMap = $scope.map.control.getGMap();
-        gMap.setCenter(marker.position);
-      };
     }
   ]);
 
