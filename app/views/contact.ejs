@@ -1,5 +1,5 @@
 <% include header %>
-<section ng-app="mezouilhac-contact" ng-controller="contactCtrl">
+<section ng-app="mezouilhac-contact" ng-controller="contactCtrl" class="contact">
 <div class="ui middle aligned page grid main">
 	<div class="row">
 		<div class="six wide column">
@@ -34,6 +34,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="ui segment">
+				<afb:like:box class="facebook-box" href="https://www.facebook.com/pages/M%C3%A9zouilhac/262548087268451?ref=br_tfp" colorscheme="light" show-faces="true" header="true" stream="false" show-border="true" width="100%"></afb:like:box>
 			</div>
 		</div>
 		<div class="ten wide column">
@@ -86,6 +89,7 @@
 <script src='components/lodash/dist/lodash.min.js'></script>
 <script src='components/bluebird/js/browser/bluebird.js'></script>*
 <script src='components/angular/angular.min.js'></script>
+<script src="components/angularjs-facebook-sdk/dist/angularjs-facebook-sdk.min.js"></script>
 <script src='components/angular-google-maps/dist/angular-google-maps.min.js'></script>
 <script src="js/contact.js"></script>
 

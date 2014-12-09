@@ -1,4 +1,4 @@
-app = angular.module 'mezouilhac-contact', ['google-maps'.ns()]
+app = angular.module 'mezouilhac-contact', ['google-maps'.ns(), 'angularjs-facebook-sdk']
 
 app.config [
   "GoogleMapApiProvider".ns()

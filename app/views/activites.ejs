@@ -2,29 +2,57 @@
 <div class="ui middle aligned page grid main" ng-app="mezouilhac-gmap">
 	<div class="row" ng-controller="activiteCtrl">
 		<div class="ten wide column">
-			<h2 class="ui top purple inverted attached segment header">
+			<h2 class="ui top orange inverted attached segment header">
 				Activite / Région
 			</h2>
 			<div class="ui attached segment activites">
 				<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:100%; width:100%;" events="map.event">
-					<ui-gmap-markers models="activites" coords="'self'" icon="'icon'" control='map.markerControl'>
+					<ui-gmap-marker ng-repeat="activite in activites" idKey="activite.id" coords="activite.position" icon="activite.icon" control='map.markerControl'>
 
-						<ui-gmap-windows show="false" control='map.windowControl' ng-cloak>
-							<div>
-								<img ng-src="/img/icon/{{img}}" alt="{{img}}" ng-non-bindable>
-								<h3 ng-non-bindable>{{title}}</h3>
-								<h5 ng-non-bindable>{{category}}</h5>
-								<p ng-non-bindable>Il faudrait pour voir mettre une micro description ! Pour savoir keke c ke 7 activité.</p>
-								<a ng-href="http://{{url}}" target="blank" ng-non-bindable>{{url}}</a>
+						<ui-gmap-window show="activite.showWindow" options="activite.windowOptions" control='activite.windowControl' ng-cloak>
+							<div class="gmap-window">
+
+								<div class="ui grid">
+									<div class="row">
+										<div class="column">
+											<h2 class="ui header">
+												<img ng-src="{{activite.img}}" alt="{{activite.img}}" class="ui left floated image icon-gmap" width="50px">
+												<div class="content">
+													{{activite.title}}
+													<div class="sub header">{{activite.category}}</div>
+												</div>
+											</h2>
+											<p>{{activite.description}}</p>
+										</div>
+									</div>
+									<div class="row">
+										<div class="twelve wide column">
+											<div class="ui label">
+												{{activite.adresse}}
+											</div>
+										</div>
+										<div class="four wide column">
+											<a ng-href="http://{{activite.url}}" target="blank"  class="ui mini blue button" ng-show="activite.url">Voir le site</a>
+										</div>
+									</div>
+								</div>
+
 							</div>
-						</ui-gmap-windows>
-					</ui-gmap-markers>
+						</ui-gmap-window>
+					</ui-gmap-marker>
 				</ui-gmap-google-map>
 			</div>	
 		</div>
 		<div class="six wide column">
 			<div class="ui attached segment list-activites">
 				<div class="ui selection relaxed divided list">
+					<div class="item" ng-click="setOn(0)">
+						<img class="ui avatar image" ng-src="/img/icon/home.png">
+						<div class="content">
+							<div class="header">Mézouilhac</div>
+							Riols, 34220
+						</div>
+					</div>
 					<div class="item" ng-repeat="activite in list_activites" ng-click="setOn(activite._id)">
 						<img class="ui avatar image" ng-src="/img/icon/{{activite.icon}}.png">
 						<div class="content">

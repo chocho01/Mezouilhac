@@ -1,6 +1,11 @@
 #Mezouilhac
 
+### Run / Stop l'application
+forever start
+forever stop
+
 ##Backoffice
+
 ###Chalet
 * Ajouter un chalet
 * Modifier un chalet

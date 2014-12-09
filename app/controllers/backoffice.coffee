@@ -22,19 +22,23 @@ module.exports = (app) ->
 		if !req.user
 			res.render 'backoffice/auth',
 				title : 'Admin'
+				pageName: 'admin'
 		else
 			res.render 'backoffice/index',
 				title : 'Admin'
+				pageName: 'admin'
 
 	router.post '/', passport.authenticate 'local-login', { successRedirect: '/admin', failureRedirect: '/admin' }
 
 	router.get '/activites', isAuth, (req, res, next) ->
 		res.render 'backoffice/activites',
 			title: 'Les activités / région'
+			pageName: 'admin'
 
 	router.get '/chalets', isAuth, (req, res, next) ->
 		res.render 'backoffice/chalets',
 			title: 'Les chalets'
+			pageName: 'admin'
 
 	router.post '/activites/add', (req, res, next)->
 		activite = new Activite(req.body)
