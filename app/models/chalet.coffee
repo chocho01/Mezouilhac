@@ -9,6 +9,13 @@ ChaletSchema = new Schema(
   gallerie : Array
   capacite : String
   description : String
+  prix :
+    haute :
+      weekend : Number
+      semaine : Number
+    basse :
+      weekend : Number
+      semaine : Number
   inventaire : [
   	nom : String
   	item: Array

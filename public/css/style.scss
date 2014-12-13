@@ -1,48 +1,48 @@
 html, body {
-    min-height: 100%;
-    margin: 0;
-    font-family: 'Open Sans Condensed', sans-serif;
-    color: #555555;
-    font-size: 1.2em;
+  min-height: 100%;
+  margin: 0;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #555555;
+  font-size: 1.2em;
 }
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .menu {
-    background: rgba(150, 200, 50, 0.7);
+  background: rgba(150, 200, 50, 0.7);
+  height: 52px;
+  text-align: center;
+  z-index: 2;
+  clear: both;
+  box-shadow: 0 4px 5px rgba(1, 1, 2, 0.4);
+  ul, li {
+    display: inline-block;
+    list-style: none;
+  }
+  ul {
+    padding-left: 150px;
     height: 52px;
-    text-align: center;
-    z-index: 2;
-    clear: both;
-    box-shadow: 0 4px 5px rgba(1, 1, 2, 0.4);
-    ul, li {
-        display: inline-block;
-        list-style: none;
+    line-height: 52px;
+    margin-top: 0;
+  }
+  li {
+    float: left;
+    padding: 0 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #fff;
+    &.active, &:hover {
+      background: #9DC21C;
     }
-    ul {
-        padding-left: 150px;
-        height: 52px;
-        line-height: 52px;
-        margin-top: 0;
-    }
-    li {
-        float: left;
-        padding: 0 10px;
-        font-size: 18px;
-        text-transform: uppercase;
-        color: #fff;
-        &.active, &:hover {
-            background: #9DC21C;
-        }
-    }
-    a {
-        color: inherit;
-        text-decoration: none;
-        display: block;
-        position: relative;
-        z-index: 30;
-    }
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    z-index: 30;
+  }
 }
 .main {
   margin-top: 25px !important;
@@ -55,9 +55,21 @@ html, body {
     overflow: hidden;
     height: 275px;
     margin-bottom: 0;
+    .carousel-caption {
+      h4 {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding : 15px 0;
+      }
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 0;
+
+    }
   }
 
-  .description {
+  .description-home {
     padding: 30px 25px;
     p {
       font-size: 1em;
@@ -69,63 +81,96 @@ html, body {
       }
     }
   }
-.gmap-window {
-  padding-top: 10px;
-  padding-right: 10px;
 
-  .header {
-    font-size: 1.2em;
+  .chalets {
+    .reveal .hidden {
+      height: 100%;
+      text-align: center;
+      background-color: rgba(0,0,0,0.9);
+      color : white;
+      display: block !important;
+      visibility: visible !important;
+      span {
+        position: relative;
+        top: 40%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
   }
 
-  .row {
-    margin-bottom: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  .icon-gmap {
-    margin-bottom: 5px !important;
-    margin-right: 10px !important;
-    margin-top: 5px !important;
-  }
-}
+  .google-map {
+    height: 95%;
 
-.list-activites {
+    .gmap-window {
+      padding-bottom: 25px !important;
+      .ui.grid {
+        margin: 0!important;
+      }
+
+      .header {
+        font-size: 1.2em;
+      }
+
+      .row {
+        margin-bottom: 2px !important;
+        padding-bottom: 2px !important;
+      }
+      .icon-gmap {
+        margin-bottom: 5px !important;
+        margin-right: 10px !important;
+        margin-top: 5px !important;
+      }
+    }
+
+  }
+
+  .list-activites {
     overflow-y: scroll;
-}
+  }
 
 
   .chalet-min {
     .label {
-        width: 5em;
-        height: 5em;
+      width: 5em;
+      height: 5em;
 
-        &:hover .nb-personne {
-            color: #ef404a;
-        }
+      &:hover .nb-personne {
+        color: #ef404a;
+      }
 
-        &:after {
-            border-right: 5em solid transparent;
-            border-bottom: 5em solid transparent;
-            border-right-color: inherit;
-        }
+      &:after {
+        border-right: 5em solid transparent;
+        border-bottom: 5em solid transparent;
+        border-right-color: inherit;
+      }
 
-        .nb-personne {
-            font-family: 'Open Sans Condensed', sans-serif;
-            left: 40px;
-            font-size: 17px;
-            font-family: bold;
-            position: absolute;
-            top: 20px;
-            opacity: .75;
-        }
+      .nb-personne {
+        font-family: 'Open Sans Condensed', sans-serif;
+        left: 40px;
+        font-size: 17px;
+        font-family: bold;
+        position: absolute;
+        top: 20px;
+        opacity: .75;
+      }
 
-        .icon {
-            top: -2px;
-            left: 25px;
-            font-size: 16px;
-            position: absolute;
-        }
+      .icon {
+        top: -2px;
+        left: 25px;
+        font-size: 16px;
+        position: absolute;
+      }
     }
   }
+}
+
+
+.modal {
+  top: 5% !important;
+  height: 90% !important;
+  overflow-y: scroll;
 }
 
 .box-gallerie {

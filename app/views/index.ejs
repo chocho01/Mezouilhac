@@ -1,14 +1,24 @@
 <% include header %>
-<div class="ui page middle aligned grid main">
+<div class="ui page middle aligned grid main" ng-controller="HomeController" ng-app="mezouilhac-home">
 	 Slider
 	<div class="row">
 		<div class="column">
 			<div class="ui segment">
+				<!--<div class="slider">-->
+					<!--<div><img data-lazy="img/slider/slider1.jpg" alt="Slider 1"></div>-->
+					<!--<div><img data-lazy="img/slider/slider2.jpg" alt="Slider 1"></div>-->
+					<!--<div><img data-lazy="img/slider/slider3.jpg" alt="Slider 1"></div>-->
+					<!--<div><img data-lazy="img/slider/slider4.jpg" alt="Slider 1"></div>-->
+				<!--</div>-->
 				<div class="slider">
-					<div><img data-lazy="img/slider/slider1.jpg" alt="Slider 1"></div>
-					<div><img data-lazy="img/slider/slider2.jpg" alt="Slider 1"></div>
-					<div><img data-lazy="img/slider/slider3.jpg" alt="Slider 1"></div>
-					<div><img data-lazy="img/slider/slider4.jpg" alt="Slider 1"></div>
+				<carousel interval="myInterval">
+					<slide ng-repeat="slide in slides" active="slide.active" ng-cloak>
+						<img ng-src="{{slide.image}}" style="margin:auto;">
+						<div class="carousel-caption">
+							<h4>{{slide.text}}</h4>
+						</div>
+					</slide>
+				</carousel>
 				</div>
 			</div>
 		</div>
@@ -19,75 +29,125 @@
 				<div class="row">
 					<div class="column">
 						<h2 class="ui top teal inverted attached segment header">
-							Description du site
+							Gîte et chalets à louer dans le parc naturel du Haut Languedoc
 						</h2>
-						<div class="ui attached segment description">
-							<p>&emsp;&emsp;Gîte et chalets à louer dans le parc naturel du Haut Languedoc, 40 hectares</p>
+						<div class="ui attached segment description-home">
 
-							<p>&emsp;&emsp;Mézouilhac, minuscule hameau de Riols, entre mer et montagne, est niché dans une petite vallée, au cœur du Parc Naturel Régional du Haut Languedoc. A 8 minutes de tous commerces et professions de santé ; à 20 minutes des lacs ; à 60 minutes de la Méditerranée</p>
+							<p>Mézouilhac, minuscule hameau de Riols, entre mer et montagne, est niché dans une petite vallée, au cœur du Parc Naturel Régional du Haut Languedoc. </p>
 
-							<p><bold>A proximité de tous loisirs</bold>f</p>
-
-							<div class="ui mini steps list-activite">
-								<div class="step">
+							<div class="ui list">
+								<div class="item">
+									<i class="map marker icon"></i>
 									<div class="content">
-										<div class="title">Pêche</div>
+										A 8 minutes de tous commerces et professions de santé
 									</div>
 								</div>
-								<div class="step">
+								<div class="item">
+									<i class="map marker icon"></i>
 									<div class="content">
-										<div class="title">Randonnée</div>
+										à 20 minutes des lacs
 									</div>
 								</div>
-								<div class="step">
+								<div class="item">
+									<i class="map marker icon"></i>
 									<div class="content">
-										<div class="title">V.T.T.</div>
-									</div>
-								</div>
-								<div class="step">
-									<div class="content">
-										<div class="title">Escalade</div>
-									</div>
-								</div>
-								<div class="step">
-									<div class="content">
-										<div class="title">Canoë</div>
-									</div>
-								</div>
-								<div class="step">
-									<div class="content">
-										<div class="title">Equitation</div>
-									</div>
-								</div>
-								<div class="step">
-									<div class="content">
-										<div class="title">Tennis…</div>
+										à 60 minutes de la Méditerranée
 									</div>
 								</div>
 							</div>
+
+							<div class="ui list">
+								<div class="item">
+									<div class="content">
+										A proximité de tous loisirs
+									</div>
+								</div>
+								<div class="item">
+									<div class="content">
+										<div class="ui mini steps list-activite">
+											<div class="step">
+												<div class="content">
+													<div class="title">Pêche</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">Randonnée</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">V.T.T.</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">Escalade</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">Canoë</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">Equitation</div>
+												</div>
+											</div>
+											<div class="step">
+												<div class="content">
+													<div class="title">Tennis…</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<p>&emsp;&emsp;Dans cet environnement de calme et de pleine nature, nous vous proposons nos 3 chalets et notre gîte sur un terrain de 40 hectares avec potager et arbres fruitiers à disposition. Véritable paradis des amoureux de la nature, la propriété se situe au cœur d'une forêt de chênes verts et de châtaigniers. Ouvert toute l'année.</p>
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row chalets">
 					<div class="four wide column">
 						<div class="ui segment">
-							<img class="ui medium centered image" src="/img/chalets/marianne-champ-min.JPG">
+							<div class="ui move up reveal">
+								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
+								<div class="hidden content">
+									<span>Chalet 1</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="four wide column">
 						<div class="ui segment">
-							<img class="ui medium centered image" src="/img/chalets/marianne-champ-min.JPG">
+							<div class="ui move up reveal">
+								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
+								<div class="hidden content">
+									<span>Chalet 1</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="four wide column">
 						<div class="ui segment">
-							<img class="ui medium centered image" src="/img/chalets/marianne-champ-min.JPG">
+							<div class="ui move up reveal">
+								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
+								<div class="hidden content">
+									<span>Chalet 1</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="four wide column">
 						<div class="ui segment">
-							<img class="ui medium centered image" src="/img/chalets/marianne-champ-min.JPG">
+							<div class="ui move up reveal">
+								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
+								<div class="hidden content">
+									<span>Chalet 1</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -124,7 +184,9 @@
 </div>	
 
 <% include footer %>
-<script src="js/index.js"></script>
+<script src='components/angular/angular.min.js'></script>
+<script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/js/index.js"></script>
 
 </body>
 </html>

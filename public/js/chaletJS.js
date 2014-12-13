@@ -1,7 +1,7 @@
 (function() {
   var app;
 
-  app = angular.module('mezouilhac-chalet', []);
+  app = angular.module('mezouilhac-chalet', ['angularify.semantic.modal']);
 
   app.filter("imgFull", [
     function() {
@@ -24,13 +24,16 @@
           return $scope.chalets[id] = d;
         });
       };
-      $scope.openModal = function(id) {
-        $('.ui.modal').modal('show');
+      $scope.changeImg = function(img) {
+        return $scope.gallerie = img;
+      };
+      $scope.open_modal = function(id) {
+        $scope.show_modal = true;
         $scope.chalet = $scope.chalets[id];
         return $scope.gallerie = $scope.chalet.img_principale;
       };
-      return $scope.changeImg = function(img) {
-        return $scope.gallerie = img;
+      return $scope.close_modal = function() {
+        return $scope.show_modal = false;
       };
     }
   ]);

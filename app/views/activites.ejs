@@ -2,49 +2,55 @@
 <div class="ui middle aligned page grid main" ng-app="mezouilhac-gmap">
 	<div class="row" ng-controller="activiteCtrl">
 		<div class="ten wide column">
-			<h2 class="ui top orange inverted attached segment header">
-				Activite / Région
-			</h2>
 			<div class="ui attached segment activites">
-				<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:100%; width:100%;" events="map.event">
-					<ui-gmap-marker ng-repeat="activite in activites" idKey="activite.id" coords="activite.position" icon="activite.icon" control='map.markerControl'>
+				<h1 class="ui large top attached orange label">
+					Activite / Région
+				</h1>
 
-						<ui-gmap-window show="activite.showWindow" options="activite.windowOptions" control='activite.windowControl' ng-cloak>
-							<div class="gmap-window">
+				<div class="google-map">
+					<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:90%; width:100%;" events="map.event">
+						<ui-gmap-marker ng-repeat="activite in activites" idKey="activite.id" coords="activite.position" icon="activite.icon" control='map.markerControl'>
 
-								<div class="ui grid">
-									<div class="row">
-										<div class="column">
-											<h2 class="ui header">
-												<img ng-src="{{activite.img}}" alt="{{activite.img}}" class="ui left floated image icon-gmap" width="50px">
-												<div class="content">
-													{{activite.title}}
-													<div class="sub header">{{activite.category}}</div>
-												</div>
-											</h2>
-											<p>{{activite.description}}</p>
-										</div>
-									</div>
-									<div class="row">
-										<div class="twelve wide column">
-											<div class="ui label">
-												{{activite.adresse}}
+							<ui-gmap-window show="activite.showWindow" options="activite.windowOptions" control='activite.windowControl' ng-cloak>
+								<div class="gmap-window">
+
+									<div class="ui grid">
+										<div class="row">
+											<div class="column">
+												<h2 class="ui header">
+													<img ng-src="{{activite.img}}" alt="{{activite.img}}" class="ui left floated image icon-gmap" width="50px">
+													<div class="content">
+														{{activite.title}}
+														<div class="sub header">{{activite.category}}</div>
+													</div>
+												</h2>
+												<p>{{activite.description}}</p>
 											</div>
 										</div>
-										<div class="four wide column">
-											<a ng-href="http://{{activite.url}}" target="blank"  class="ui mini blue button" ng-show="activite.url">Voir le site</a>
+										<div class="row">
+											<div class="twelve wide column">
+												<div class="ui label">
+													{{activite.adresse}}
+												</div>
+											</div>
+											<div class="four wide column">
+												<a ng-href="http://{{activite.url}}" target="blank"  class="ui mini blue button" ng-show="activite.url">Voir le site</a>
+											</div>
 										</div>
 									</div>
-								</div>
 
-							</div>
-						</ui-gmap-window>
-					</ui-gmap-marker>
-				</ui-gmap-google-map>
-			</div>	
+								</div>
+							</ui-gmap-window>
+						</ui-gmap-marker>
+					</ui-gmap-google-map>
+				</div>
+			</div>
 		</div>
 		<div class="six wide column">
-			<div class="ui attached segment list-activites">
+			<div class="ui segment list-activites">
+				<h1 class="ui large top attached orange label">
+					Liste des activités
+				</h1>
 				<div class="ui selection relaxed divided list">
 					<div class="item" ng-click="setOn(0)">
 						<img class="ui avatar image" ng-src="/img/icon/home.png">

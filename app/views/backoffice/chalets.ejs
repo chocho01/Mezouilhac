@@ -42,6 +42,51 @@
 							</div>
 						</div>
 					</div>
+					<!--Prix-->
+					<div class="field">
+						<label>Prix </label>
+						<table class="ui table">
+							<thead>
+							<tr>
+								<th>Période</th>
+								<th>Week end</th>
+								<th>Semaine</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>Haute <br> 01/05 - 01/09</td>
+								<td>
+									<div class="ui icon small input">
+										<input type="text" ng-model="chalet.prix.haute.weekend">
+										<i class="euro icon"></i>
+									</div>
+								</td>
+								<td>
+									<div class="ui icon small input">
+										<input type="text" ng-model="chalet.prix.haute.semaine">
+										<i class="euro icon"></i>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>Haute <br> 01/05 - 01/09</td>
+								<td>
+									<div class="ui icon small input">
+										<input type="text" ng-model="chalet.prix.basse.weekend">
+										<i class="euro icon"></i>
+									</div>
+								</td>
+								<td>
+									<div class="ui icon small input">
+										<input type="text" ng-model="chalet.prix.basse.semaine">
+										<i class="euro icon"></i>
+									</div>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
 					<!-- Liste des images-->
 					<div class="field">
 						<label for="file">Galerie <div class="circular ui mini ticon button"><i class="add icon"></i></div> </label>

@@ -1,4 +1,4 @@
-app = angular.module 'mezouilhac-chalet', []
+app = angular.module 'mezouilhac-chalet', ['angularify.semantic.modal']
 
 app.filter "imgFull", [ ->
 	(img)->
@@ -21,12 +21,15 @@ app.controller "chaletsCtrl", [
 				$scope.chalets[id] = d
 			)
 
-		$scope.openModal = (id)->
-			$('.ui.modal').modal 'show'
+		$scope.changeImg = (img)->
+			$scope.gallerie =  img
+
+		$scope.open_modal = (id)->
+			$scope.show_modal = true
 			$scope.chalet = $scope.chalets[id]
 			$scope.gallerie = $scope.chalet.img_principale
 
-		$scope.changeImg = (img)->
-			$scope.gallerie =  img
+		$scope.close_modal = ->
+			$scope.show_modal = false
 
 ]
