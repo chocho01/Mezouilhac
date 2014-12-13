@@ -29,7 +29,7 @@
 							<p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces.</p>
 						</div>
 					</div>
-					<div class="ui bottom attached red button" data-modal="<%= i %>" ng-click="openModal('<%= chalet._id %>')">
+					<div class="ui bottom attached red button" data-modal="<%= i %>" ng-click="open_modal('<%= chalet._id %>')">
 						<i class="search icon"></i>
 						En savoir plus
 					</div>
@@ -41,7 +41,7 @@
 	</div>
 
 	<!-- Modal -->
-	<div class="ui large modal">
+	<modal ng-model="show_modal">
 		<i class="close icon"></i>
 		<div class="header">
 			{{chalet.nom}}
@@ -66,16 +66,35 @@
 					<div class="six wide column">
 						<div class="row">
 							<div class="ui segment">
-								<h3 class="ui large top attached green label">Caractéristique</h3>
-								<p>puis on va mettre du texte ici<br/>
-									Même une liste</p>
+								<h3 class="ui large top attached green label">Description</h3>
+								<p>{{chalet.description}}</p>
 							</div>
 						</div>
 						<br>
 						<div class="row">
 							<div class="ui segment">
 								<h3 class="ui large top attached green label">Prix</h3>
-								<p></p>
+								<table class="ui table">
+									<thead>
+									<tr>
+										<th>Période</th>
+										<th>Week end</th>
+										<th>Semaine</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>Haute <br> 01/05 - 01/09</td>
+										<td>{{chalet.prix.haute.weekend | currency:'€'}}</td>
+										<td>{{chalet.prix.haute.semaine | currency:'€'}}</td>
+									</tr>
+									<tr>
+										<td>Haute <br> 01/05 - 01/09</td>
+										<td>{{chalet.prix.basse.weekend | currency:'€'}}</td>
+										<td>{{chalet.prix.basse.semaine | currency:'€'}}</td>
+									</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -100,15 +119,15 @@
 			</div>
 		</div>
 		<div class="actions">
-			<div class="ui button">Fermer</div>
+			<div class="ui button" ng-click="close_modal()">Fermer</div>
 		</div>
-	</div>
+	</modal>
 </div>
 
 <% include footer %>
-
-<script src='components/angular/angular.min.js'></script>
-<script src="js/chaletJS.js"></script>
+<script src='/components/angular/angular.min.js'></script>
+<script src="/js/modal.js"></script>
+<script src="/js/chaletJS.js"></script>
 
 </body>
 </html>

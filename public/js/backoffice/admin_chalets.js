@@ -22,7 +22,17 @@
           capacite: null,
           img_principale: null,
           gallerie: [],
-          inventaire: []
+          inventaire: [],
+          prix: {
+            haute: {
+              weekend: null,
+              semaine: null
+            },
+            basse: {
+              weekend: null,
+              semaine: null
+            }
+          }
         };
         return $scope.action = 'add';
       };

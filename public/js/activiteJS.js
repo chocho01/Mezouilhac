@@ -1,9 +1,9 @@
 (function() {
   var app, arrayObjectIndexOf;
 
-  $(".activites").height($(window).height() - ($(window).height() / 3.5));
+  $(".activites").height($(window).height() - ($(window).height() / 4.5));
 
-  $(".list-activites").height($(window).height() - ($(window).height() / 4));
+  $(".list-activites").height($(window).height() - ($(window).height() / 4.5));
 
   arrayObjectIndexOf = function(myArray, searchTerm, property) {
     var i, len;
@@ -64,7 +64,7 @@
       });
       GoogleMapApi.then(function(maps) {
         $scope.centerPos = new maps.LatLng(43.507480, 2.822272);
-        $(".angular-google-map-container").height($(".activites").height());
+        $(".angular-google-map-container").height($(".google-map").height());
         $scope.setOn = function(id_marker) {
           angular.forEach($scope.activites, function(marker) {
             marker.showWindow = false;

@@ -1,5 +1,5 @@
-$(".activites").height($(window).height() - ($(window).height()/3.5))
-$(".list-activites").height($(window).height() - ($(window).height()/4))
+$(".activites").height($(window).height() - ($(window).height()/4.5))
+$(".list-activites").height($(window).height() - ($(window).height()/4.5))
 
 arrayObjectIndexOf = (myArray, searchTerm, property) ->
 	i = 0
@@ -56,7 +56,7 @@ app.controller "activiteCtrl", [
 		GoogleMapApi.then (maps) ->
 			$scope.centerPos = new maps.LatLng(43.507480, 2.822272)
 			# Définis la hauteur du conteneur Gmap à la hauteur du block
-			$(".angular-google-map-container").height($(".activites").height())
+			$(".angular-google-map-container").height($(".google-map").height())
 
 			$scope.setOn = (id_marker)->
 				angular.forEach $scope.activites, (marker)->

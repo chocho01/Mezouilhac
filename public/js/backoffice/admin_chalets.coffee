@@ -25,6 +25,13 @@ app.controller "chaletCtrl", [
 				img_principale: null
 				gallerie: []
 				inventaire : []
+				prix:
+					haute:
+						weekend: null
+						semaine: null
+					basse:
+						weekend: null
+						semaine: null
 
 			$scope.action = 'add'
 

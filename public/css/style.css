@@ -49,26 +49,48 @@ html, body {
     overflow: hidden;
     height: 275px;
     margin-bottom: 0; }
-  .main .description {
+    .main .slider .carousel-caption h4 {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 0; }
+    .main .slider .carousel-indicators {
+      position: absolute;
+      bottom: 0; }
+  .main .description-home {
     padding: 30px 25px; }
-    .main .description p {
+    .main .description-home p {
       font-size: 1em; }
-    .main .description .steps {
+    .main .description-home .steps {
       margin: 20px auto !important; }
-      .main .description .steps .content {
+      .main .description-home .steps .content {
         font-size: 0.8em; }
-  .main .gmap-window {
-    padding-top: 10px;
-    padding-right: 10px; }
-    .main .gmap-window .header {
-      font-size: 1.2em; }
-    .main .gmap-window .row {
-      margin-bottom: 2px !important;
-      padding-bottom: 2px !important; }
-    .main .gmap-window .icon-gmap {
-      margin-bottom: 5px !important;
-      margin-right: 10px !important;
-      margin-top: 5px !important; }
+  .main .chalets .reveal .hidden {
+    height: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: block !important;
+    visibility: visible !important; }
+    .main .chalets .reveal .hidden span {
+      position: relative;
+      top: 40%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%); }
+  .main .google-map {
+    height: 95%; }
+    .main .google-map .gmap-window {
+      padding-bottom: 25px !important; }
+      .main .google-map .gmap-window .ui.grid {
+        margin: 0 !important; }
+      .main .google-map .gmap-window .header {
+        font-size: 1.2em; }
+      .main .google-map .gmap-window .row {
+        margin-bottom: 2px !important;
+        padding-bottom: 2px !important; }
+      .main .google-map .gmap-window .icon-gmap {
+        margin-bottom: 5px !important;
+        margin-right: 10px !important;
+        margin-top: 5px !important; }
   .main .list-activites {
     overflow-y: scroll; }
   .main .chalet-min .label {
@@ -93,6 +115,11 @@ html, body {
       left: 25px;
       font-size: 16px;
       position: absolute; }
+
+.modal {
+  top: 5% !important;
+  height: 90% !important;
+  overflow-y: scroll; }
 
 .box-gallerie {
   width: 150px !important;
