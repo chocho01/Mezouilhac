@@ -110,46 +110,18 @@
 					</div>
 				</div>
 				<div class="row chalets">
+					<% chalets.forEach(function (chalet, i) { %>
 					<div class="four wide column">
 						<div class="ui segment">
 							<div class="ui move up reveal">
-								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
+								<img class="visible content ui medium image" src="img/chalets/<%= chalet.img_principale %>">
 								<div class="hidden content">
-									<span>Chalet 1</span>
+									<span><%= chalet.nom %></span>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="four wide column">
-						<div class="ui segment">
-							<div class="ui move up reveal">
-								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
-								<div class="hidden content">
-									<span>Chalet 1</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="four wide column">
-						<div class="ui segment">
-							<div class="ui move up reveal">
-								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
-								<div class="hidden content">
-									<span>Chalet 1</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="four wide column">
-						<div class="ui segment">
-							<div class="ui move up reveal">
-								<img class="visible content ui medium image" src="/img/chalets/marianne-champ-min.JPG">
-								<div class="hidden content">
-									<span>Chalet 1</span>
-								</div>
-							</div>
-						</div>
-					</div>
+					<% }); %>
 				</div>
 			</div>
 		</div>
