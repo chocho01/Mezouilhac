@@ -1,5 +1,5 @@
 #Mezouilhac
-v0.4
+v0.5
 
 ### Run / Stop l'application
 forever start
@@ -42,7 +42,8 @@ forever stop
 * Infos
 * Page Facebook
 * Gmap
-* Formulaire contact (TODO : Envoyer email)
+* Formulaire contact
+* Envoi Email + Feedback (TODO : changer email du destinataire)
 
 ## TODO PAPA
 * Rédiger contenu page accueil
