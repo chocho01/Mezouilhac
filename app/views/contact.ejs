@@ -1,5 +1,5 @@
 <% include header %>
-<section ng-app="mezouilhac-contact" ng-controller="contactCtrl" class="contact">
+<section ng-app="mezouilhac-contact" ng-controller="contactController" class="contact">
 <div class="ui middle aligned page grid main">
 	<div class="row">
 		<div class="six wide column">
@@ -44,32 +44,42 @@
 				<h1 class="ui large top attached blue label">
 					Contactez-nous !
 				</h1>
-				<div class="ui form">
+				<form class="ui ng-class:{'loading': sendingEmail}; form" name="contactForm" ng-submit="sendEmail(contactForm.$valid)"  ng-show="!showResult.submit && !showResult.success" novalidate>
 					<div class="two fields">
-						<div class="field">
+						<div class="required field">
 							<label>Nom</label>
 							<div class="two fields">
-								<div class="field">
-									<input type="text" name="prenom" placeholder="Prénom">
+								<div class="field" ng-class="{'error': contactForm.prenom.$invalid && !contactForm.prenom.$pristine}">
+									<input type="text" name="prenom" placeholder="Prénom" ng-model="contact.prenom" required >
 								</div>
-								<div class="field">
-									<input type="text" name="nom" placeholder="Nom">
+								<div class="field" ng-class="{'error': contactForm.nom.$invalid && !contactForm.nom.$pristine}">
+									<input type="text" name="nom" placeholder="Nom" ng-model="contact.nom" required>
 								</div>
 							</div>
 						</div>
-						<div class="field">
+						<div class="required field" ng-class="{'error': contactForm.email.$invalid && !contactForm.email.$pristine}">
 							<label>Email</label>
 							<div class="field">
-								<input type="text" name="email" placeholder="email">
+								<input type="email" name="email" placeholder="email" ng-model="contact.email" required>
 							</div>
 						</div>
 					</div>
-					<div class="field">
+					<div class="required field" ng-class="{'error': contactForm.message.$invalid && !contactForm.message.$pristine}">
 						<label>Message</label>
-						<textarea></textarea>
+						<textarea name="message" ng-model="contact.message" required></textarea>
 					</div>
 					<div class="field">
-						<div class="ui submit teal button">Envoyer</div>
+						<button type="submit"  class="ui submit teal button">Envoyer</button>
+					</div>
+				</form>
+				<div class="ui success message" ng-show="showResult.submit && showResult.success">
+					<div class="header">
+						Votre demande a bien été prise en compte.
+					</div>
+				</div>
+				<div class="ui success message" ng-show="showResult.submit && !showResult.success">
+					<div class="header">
+						Une erreur est survenu, veuillez recommencer.
 					</div>
 				</div>
 			</div>
@@ -79,7 +89,7 @@
 
 <div class="map-footer">
 	<ui-gmap-google-map center="map.center" zoom="map.zoom" control="map.control" bounds="map.control" pan="true" style="height:100%; width:100%;" events="map.event">
-		<ui-gmap-markers models="activites" coords="'self'" icon="'icon'" control='map.markerControl'>
+		<ui-gmap-markers models="marker" coords="'self'" icon="'icon'" control='map.markerControl'>
 		</ui-gmap-markers>
 	</ui-gmap-google-map>
 </div>

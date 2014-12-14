@@ -10,21 +10,25 @@ app.config [
     return
 ]
 
-app.controller "contactCtrl", [
+app.controller "contactController", [
   "$scope"
   'Logger'.ns()
   "GoogleMapApi".ns()
   "$http"
   ($scope, $log, GoogleMapApi, $http) ->
 
-    $scope.activites = []
+    $scope.marker = []
+    $scope.sendingEmail = false
+    $scope.showResult =
+      submit : false
+      success : false
 
     GoogleMapApi.then (maps) ->
       $scope.centerPos = new maps.LatLng(43.507480, 2.822272)
       # Définis la hauteur du conteneur Gmap à la hauteur du block
       $(".angular-google-map-container").height($(".map-footer").height())
 
-      $scope.activites.push
+      $scope.marker.push
         latitude: $scope.map.center.latitude,
         longitude: $scope.map.center.longitude,
         title: 'Home'
@@ -42,6 +46,22 @@ app.controller "contactCtrl", [
         zoom: 12
         event: {}
     }
+
+    $scope.sendEmail = (isValid)->
+      if isValid
+        $scope.sendingEmail = true
+        $http.post '/contact', {mail: $scope.contact}
+        .success (data, status, headers, config)->
+          $scope.sendingEmail = false
+          $scope.showResult =
+            submit : true
+            success : data
+        .error (err)->
+          $scope.sendingEmail = false
+          $scope.showResult =
+            submit : true
+            success : false
+
 
     return
 

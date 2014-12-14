@@ -13,13 +13,18 @@
     }
   ]);
 
-  app.controller("contactCtrl", [
+  app.controller("contactController", [
     "$scope", 'Logger'.ns(), "GoogleMapApi".ns(), "$http", function($scope, $log, GoogleMapApi, $http) {
-      $scope.activites = [];
+      $scope.marker = [];
+      $scope.sendingEmail = false;
+      $scope.showResult = {
+        submit: false,
+        success: false
+      };
       GoogleMapApi.then(function(maps) {
         $scope.centerPos = new maps.LatLng(43.507480, 2.822272);
         $(".angular-google-map-container").height($(".map-footer").height());
-        return $scope.activites.push({
+        return $scope.marker.push({
           latitude: $scope.map.center.latitude,
           longitude: $scope.map.center.longitude,
           title: 'Home',
@@ -39,6 +44,26 @@
           event: {}
         }
       });
+      $scope.sendEmail = function(isValid) {
+        if (isValid) {
+          $scope.sendingEmail = true;
+          return $http.post('/contact', {
+            mail: $scope.contact
+          }).success(function(data, status, headers, config) {
+            $scope.sendingEmail = false;
+            return $scope.showResult = {
+              submit: true,
+              success: data
+            };
+          }).error(function(err) {
+            $scope.sendingEmail = false;
+            return $scope.showResult = {
+              submit: true,
+              success: false
+            };
+          });
+        }
+      };
     }
   ]);
 
