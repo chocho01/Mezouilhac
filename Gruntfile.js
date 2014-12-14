@@ -54,13 +54,13 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'public/js',
+          cwd: 'public/coffee',
           src: '{,*/}*.coffee',
           dest: 'public/js',
           ext: '.js'
         }]
-      },
-    },
+      }
+    }
   });
 
   grunt.config.requires('watch.js.files');

@@ -157,12 +157,13 @@ section.contact {
     clear: both;
     position: relative;
     z-index: 10; }
-
-.facebook-box {
-  width: 100%; }
-  .facebook-box > span {
-    width: 100% !important; }
-    .facebook-box > span > iframe {
+  section.contact .message {
+    margin-top: 50px; }
+  section.contact .facebook-box {
+    width: 100%; }
+    section.contact .facebook-box > span {
       width: 100% !important; }
+      section.contact .facebook-box > span > iframe {
+        width: 100% !important; }
 
 /*# sourceMappingURL=style.css.map */

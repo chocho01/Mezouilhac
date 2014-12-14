@@ -43,3 +43,9 @@ forever stop
 * Page Facebook
 * Gmap
 * Formulaire contact (TODO : Envoyer email)
+
+## TODO PAPA
+* Rédiger contenu page accueil
+* Créer les 4 chalets
+* Créer des activités
+* Rédiger un peu plus de contenu

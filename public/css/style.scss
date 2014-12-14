@@ -233,16 +233,20 @@ section.contact {
     position: relative;
     z-index: 10;
   }
-}
 
-.facebook-box {
-  width: 100%;
+  .message {
+    margin-top: 50px;
+  }
 
-  & > span {
+  .facebook-box {
+    width: 100%;
+
+    & > span {
     width: 100% !important;
 
-    & > iframe {
-      width: 100% !important;
+      & > iframe {
+        width: 100% !important;
+      }
     }
   }
 }
